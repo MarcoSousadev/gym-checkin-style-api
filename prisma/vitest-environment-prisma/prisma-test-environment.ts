@@ -30,14 +30,16 @@ export default <Environment> {
 
     console.log(databaseUrl)
 
-    execSync('npx prisma migrate deploy')
+
+    execSync(`npx prisma migrate deploy --schema=prisma/schema.prisma`)
 
     return {
-      async teardown(){
-        await prisma.$executeRawUnsafe(`DROP SHCEMA IF EXISTS "${schema}" CASCADE`)
+      async teardown() {
+        await prisma.$executeRawUnsafe(
+          `DROP SCHEMA IF EXISTS "${schema}" CASCADE`
+        )
 
         await prisma.$disconnect()
-
       }
     }
   }

@@ -16,7 +16,7 @@ describe('Search Gym(e2e)',  () => {
 
   it('shouldbe able to search gyms by title', async () =>{
    
-  const { token } = await createAndAuthenticateUser(app)
+  const { token } = await createAndAuthenticateUser(app, true)
 
  
 
